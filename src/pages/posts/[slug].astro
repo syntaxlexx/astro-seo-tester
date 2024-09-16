@@ -4,6 +4,7 @@ import { Card, CardContent, CardFooter } from "@/components/ui/card";
 import Layout from "@/layouts/Layout.astro";
 import { getPost } from "@/lib/api-queries";
 import { Image } from "astro:assets";
+import { AstroSeo } from '@astrolib/seo';
 
 const { slug } = Astro.params;
 if(! slug) return Astro.redirect('/blog');
@@ -11,7 +12,25 @@ if(! slug) return Astro.redirect('/blog');
 
 const post = await getPost({ slug });
 if(! post) return Astro.redirect('/404');
+
+const pathname = Astro.url.pathname;
+
 ---
+
+<AstroSeo
+  title={post.title}
+  description={post.excerpt}
+  openGraph={{
+    url: pathname,
+    title: post.title,
+    description: post.excerpt,
+    images: [
+      {
+        url: post.featured_img,
+      },
+    ],
+  }}
+/>
 
 <Layout title="Welcome to Our Blog">
 	<section class="container py-8 space-y-4">

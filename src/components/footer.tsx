@@ -43,37 +43,9 @@ const sections = [
 
 const Footer = () => {
   return (
-    <section className="py-32">
+    <section className="py-8">
       <div className="container">
         <footer>
-          <div className="flex flex-col justify-between gap-4 md:flex-row md:items-center">
-            <img
-              src="https://www.shadcnblocks.com/images/block/logos/shadcn-ui.svg"
-              alt="logo"
-              className="mb-8 mr-auto h-7 md:mb-0"
-            />
-            <div className="flex flex-col gap-4 md:flex-row md:items-center">
-              <p className="text-lg font-medium">
-                Copy the code and make it yours.
-              </p>
-              <div className="flex gap-2">
-                <a
-                  href="#"
-                  className="inline-flex items-center justify-center rounded-lg bg-primary p-2.5">
-                  <FaApple className="size-7 text-background" />
-                </a>
-                <a
-                  href="#"
-                  className="inline-flex items-center justify-center rounded-lg bg-primary p-2.5">
-                  <img
-                    src="images/icons/google-play-icon.svg"
-                    className="size-6 text-background"
-                    alt="google play"
-                  />
-                </a>
-              </div>
-            </div>
-          </div>
           <Separator className="my-14" />
           <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
             {sections.map((section, sectionIdx) => (
@@ -125,7 +97,7 @@ const Footer = () => {
               </ul>
             </div>
           </div>
-          <Separator className="my-14" />
+          <Separator className="my-8" />
           <p className="text-sm text-muted-foreground">
             © 2024 Shadcnblocks. All rights reserved.
           </p>

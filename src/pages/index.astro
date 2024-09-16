@@ -2,12 +2,14 @@
 import Hero from '@/components/hero';
 import Layout from '../layouts/Layout.astro';
 
-import { Button } from '@/components/ui/button';
 import '@/styles/globals.css';
+
+export const prerender = true;
+
 ---
 
 <Layout title="Welcome to Astro.">
-	<main class="container">
+	<section class="container">
 		<Hero/>
-	</main>
+	</section>
 </Layout>

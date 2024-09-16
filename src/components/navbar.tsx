@@ -25,14 +25,14 @@ const Navbar = () => {
       <div className="container relative">
         <nav className="hidden justify-between lg:flex">
           <div className="flex items-center gap-6">
-            <div className="flex items-center gap-2">
+            <a href="/" className="flex items-center gap-2">
               <img
                 src="https://www.shadcnblocks.com/images/block/block-1.svg"
                 className="w-8"
                 alt="logo"
               />
               <span className="text-xl font-bold">Shadcn Blocks</span>
-            </div>
+            </a>
             <div className="flex items-center">
               <a
                 className={cn(
@@ -42,7 +42,7 @@ const Navbar = () => {
                     variant: "ghost",
                   })
                 )}
-                href="#">
+                href="/">
                 Home
               </a>
 
@@ -65,7 +65,7 @@ const Navbar = () => {
                     variant: "ghost",
                   })
                 )}
-                href="#">
+                href="/blog">
                 Blog
               </a>
             </div>

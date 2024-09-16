@@ -2,6 +2,9 @@ import { Star } from "lucide-react";
 
 import { Avatar, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
+import { Image } from "astro:assets";
+
+const loremImage = "https://picsum.photos/200/300?random=";
 
 const Hero = () => {
   return (
@@ -21,38 +24,33 @@ const Hero = () => {
           Discover all components
         </Button>
         <div className="mx-auto mt-10 flex w-fit flex-col items-center gap-4 sm:flex-row">
-          <span className="mx-4 inline-flex items-center -space-x-4">
-            <Avatar className="size-14 border">
-              <AvatarImage
-                src="https://www.shadcnblocks.com/images/block/avatar-1.webp"
-                alt="placeholder"
-              />
-            </Avatar>
-            <Avatar className="size-14 border">
-              <AvatarImage
-                src="https://www.shadcnblocks.com/images/block/avatar-2.webp"
-                alt="placeholder"
-              />
-            </Avatar>
-            <Avatar className="size-14 border">
-              <AvatarImage
-                src="https://www.shadcnblocks.com/images/block/avatar-3.webp"
-                alt="placeholder"
-              />
-            </Avatar>
-            <Avatar className="size-14 border">
-              <AvatarImage
-                src="https://www.shadcnblocks.com/images/block/avatar-4.webp"
-                alt="placeholder"
-              />
-            </Avatar>
-            <Avatar className="size-14 border">
-              <AvatarImage
-                src="https://www.shadcnblocks.com/images/block/avatar-5.webp"
-                alt="placeholder"
-              />
-            </Avatar>
-          </span>
+          <div className="mx-4 inline-flex items-center -space-x-4">
+            <img
+              className="size-14 border rounded-full"
+              src={loremImage + "1"}
+              alt="placeholder"
+            />
+            <img
+              className="size-14 border rounded-full"
+              src={loremImage + "2"}
+              alt="placeholder"
+            />
+            <img
+              className="size-14 border rounded-full"
+              src={loremImage + "3"}
+              alt="placeholder"
+            />
+            <img
+              className="size-14 border rounded-full"
+              src={loremImage + "4"}
+              alt="placeholder"
+            />
+            <img
+              className="size-14 border rounded-full"
+              src={loremImage + "5"}
+              alt="placeholder"
+            />
+          </div>
           <div>
             <div className="flex items-center gap-1">
               <Star className="size-5 fill-yellow-400 text-yellow-400" />

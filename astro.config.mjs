@@ -13,4 +13,8 @@ export default defineConfig({
       applyBaseStyles: false,
     }),
   ],
+  image: {
+    remotePatterns: [{ protocol: "https" }],
+    domains: ["picsum.photos"],
+  },
 });

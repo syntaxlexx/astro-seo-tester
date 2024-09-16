@@ -18,7 +18,7 @@ import { cn } from "@/lib/utils";
 
 const Navbar = () => {
   return (
-    <section className="py-4">
+    <section className="py-4 border-b border-gray-100 shadow">
       <div className="container">
         <nav className="hidden justify-between lg:flex">
           <div className="flex items-center gap-6">
@@ -72,6 +72,7 @@ const Navbar = () => {
             <Button>Sign up</Button>
           </div>
         </nav>
+
         <div className="block lg:hidden">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-2">

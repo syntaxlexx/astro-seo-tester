@@ -39,6 +39,13 @@ const sections = [
       { name: "Advertise", href: "#" },
     ],
   },
+  {
+    title: "Legal",
+    links: [
+      { name: "Term of Services", href: "#" },
+      { name: "Privacy Policy", href: "#" },
+    ],
+  },
 ];
 
 const Footer = () => {
@@ -47,7 +54,7 @@ const Footer = () => {
       <div className="container">
         <footer>
           <Separator className="my-14" />
-          <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
+          <div className="grid gap-4 md:gap-8 grid-cols-2 lg:grid-cols-4">
             {sections.map((section, sectionIdx) => (
               <div key={sectionIdx}>
                 <h3 className="mb-4 font-bold">{section.title}</h3>
@@ -62,17 +69,17 @@ const Footer = () => {
                 </ul>
               </div>
             ))}
+          </div>
+
+          <Separator className="my-8" />
+
+          <div className="flex flex-col md:flex-row gap-4 md:justify-between items-center">
+            <p className="text-sm text-muted-foreground">
+              © {new Date().getFullYear()} Shadcnblocks. All rights reserved.
+            </p>
+
             <div>
-              <h3 className="mb-4 font-bold">Legal</h3>
-              <ul className="space-y-4 text-muted-foreground">
-                <li className="font-medium hover:text-primary">
-                  <a href="#">Term of Services</a>
-                </li>
-                <li className="font-medium hover:text-primary">
-                  <a href="#">Privacy Policy</a>
-                </li>
-              </ul>
-              <h3 className="mb-4 mt-8 font-bold">Social</h3>
+              <h3 className="mb-4 mt-8 font-bold sr-only">Social</h3>
               <ul className="flex items-center space-x-6 text-muted-foreground">
                 <li className="font-medium hover:text-primary">
                   <a href="#">
@@ -97,10 +104,6 @@ const Footer = () => {
               </ul>
             </div>
           </div>
-          <Separator className="my-8" />
-          <p className="text-sm text-muted-foreground">
-            © 2024 Shadcnblocks. All rights reserved.
-          </p>
         </footer>
       </div>
     </section>

@@ -1,0 +1,19 @@
+---
+import SinglePost from "@/components/posts/single-post";
+import Layout from "@/layouts/Layout.astro";
+import { getPost } from "@/lib/api-queries";
+
+const { slug } = Astro.params;
+
+if(! slug) return Astro.redirect('/blog');
+
+
+const post = await getPost({ slug });
+if(! post) return Astro.redirect('/404');
+---
+
+<Layout title="Welcome to Our Blog">
+	<section class="container py-8 space-y-4">
+		<SinglePost post={post} />
+	</section>
+</Layout>

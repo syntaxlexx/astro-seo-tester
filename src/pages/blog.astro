@@ -6,6 +6,7 @@ import PostsGrid from '@/components/posts/posts-grid';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 
 import { getPosts } from '@/lib/api-queries';
+import { Image } from 'astro:assets';
 
 const posts = await getPosts({})
 ---
@@ -17,10 +18,11 @@ const posts = await getPosts({})
 			{posts.data.map((post) => (
 				<article>
       <Card className="flex flex-col">
-        <img
+        <Image
           src={post.featured_img}
           alt={post.title}
           class="w-full h-48 object-cover"
+          inferSize
         />
         <CardHeader>
           <CardTitle>{post.title}</CardTitle>
@@ -45,6 +47,10 @@ const posts = await getPosts({})
           <a href={`/posts/${post.slug}`}>
             <Button variant={"outline"}>Read More</Button>
           </a>
+        
+                        <a href={`/posts/client-side/${post.slug}`}>
+                          <Button variant={"secondary"}>Read (Client-Side)</Button>
+                        </a>
         </CardFooter>
       </Card>
     </article>

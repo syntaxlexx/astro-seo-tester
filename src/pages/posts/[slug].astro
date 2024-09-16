@@ -1,7 +1,9 @@
 ---
-import { Card, CardContent } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardFooter } from "@/components/ui/card";
 import Layout from "@/layouts/Layout.astro";
 import { getPost } from "@/lib/api-queries";
+import { Image } from "astro:assets";
 
 const { slug } = Astro.params;
 if(! slug) return Astro.redirect('/blog');
@@ -20,10 +22,11 @@ if(! post) return Astro.redirect('/404');
           <h1 class="text-3xl font-bold text-center">{post.title}</h1>
           <p class="text-muted-foreground">{post.excerpt}</p>
           <div class="w-full h-64">
-              <img
+              <Image
                   src={post.featured_img}
                   alt={post.title}
                   class="w-full h-full object-contain"
+                  inferSize
               />
           </div>
           <div>
@@ -48,6 +51,15 @@ if(! post) return Astro.redirect('/404');
                               <dd>{post.published_at_human}</dd>
                           </dl>
                       </CardContent>
+                      <CardFooter className="flex flex-col gap-y-3">
+                        <a href={`/posts/${post.slug}`}>
+                          <Button variant={"outline"}>View Server-Loaded</Button>
+                        </a>
+        
+                        <a href={`/posts/client-side/${post.slug}`}>
+                          <Button variant={"secondary"}>View Client-Side Loaded</Button>
+                        </a>
+                      </CardFooter>
                   </Card>
               </div>
           </div>

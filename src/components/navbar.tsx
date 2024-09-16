@@ -15,11 +15,14 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet";
 import { cn } from "@/lib/utils";
+import { useState } from "react";
 
 const Navbar = () => {
+  const [isOpen, setIsOpen] = useState(false);
+
   return (
-    <section className="py-4 border-b border-gray-100 shadow">
-      <div className="container">
+    <section className="py-4 border-b border-gray-100 shadow sticky top-0 z-10 backdrop-blur-sm bg-opacity-50 bg-gray-50">
+      <div className="container relative">
         <nav className="hidden justify-between lg:flex">
           <div className="flex items-center gap-6">
             <div className="flex items-center gap-2">
@@ -83,9 +86,12 @@ const Navbar = () => {
               />
               <span className="text-xl font-bold">Shadcn Blocks</span>
             </div>
-            <Sheet>
+            <Sheet open={isOpen} onOpenChange={setIsOpen}>
               <SheetTrigger asChild>
-                <Button variant={"outline"} size={"icon"}>
+                <Button
+                  variant={"outline"}
+                  size={"icon"}
+                  onClick={() => setIsOpen(!isOpen)}>
                   <Menu className="size-4" />
                 </Button>
               </SheetTrigger>

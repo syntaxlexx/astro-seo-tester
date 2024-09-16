@@ -1,0 +1,58 @@
+---
+import { Card, CardContent } from "@/components/ui/card";
+import Layout from "@/layouts/Layout.astro";
+import { getPost } from "@/lib/api-queries";
+
+const { slug } = Astro.params;
+if(! slug) return Astro.redirect('/blog');
+
+
+const post = await getPost({ slug });
+if(! post) return Astro.redirect('/404');
+---
+
+<Layout title="Welcome to Our Blog">
+	<section class="container py-8 space-y-4">
+		<h1 class="font-semibold text-2xl">{post.title}</h1>
+
+    <div class="relative">
+      <article class="space-y-3 prose lg:prose-lg">
+          <h1 class="text-3xl font-bold text-center">{post.title}</h1>
+          <p class="text-muted-foreground">{post.excerpt}</p>
+          <div class="w-full h-64">
+              <img
+                  src={post.featured_img}
+                  alt={post.title}
+                  class="w-full h-full object-contain"
+              />
+          </div>
+          <div>
+              <div set:html={post.content}></div>
+          </div>
+      </article>
+
+      {/* sidebar */}
+      <div class="md:absolute md:right-0 md:top-0">
+          <div class="relative">
+              <div class="sticky top-0">
+                  <Card>
+                      <CardContent className="pt-4">
+                          <dl class="grid grid-cols-2 gap-2">
+                              <dt>By</dt>
+                              <dd>{post.user?.name}</dd>
+
+                              <dt>Under</dt>
+                              <dd>{post.category?.name}</dd>
+
+                              <dt>Published</dt>
+                              <dd>{post.published_at_human}</dd>
+                          </dl>
+                      </CardContent>
+                  </Card>
+              </div>
+          </div>
+      </div>
+  </div>
+
+	</section>
+</Layout>

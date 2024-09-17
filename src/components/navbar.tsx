@@ -23,6 +23,7 @@ const Navbar = () => {
   return (
     <section className="py-4 border-b border-gray-100 shadow sticky top-0 z-10 backdrop-blur-sm bg-opacity-50 bg-gray-50">
       <div className="container relative">
+        {/* desktop */}
         <nav className="hidden justify-between lg:flex">
           <div className="flex items-center gap-6">
             <a href="/" className="flex items-center gap-2">
@@ -76,16 +77,17 @@ const Navbar = () => {
           </div>
         </nav>
 
+        {/* mobile */}
         <div className="block lg:hidden">
           <div className="flex items-center justify-between">
-            <div className="flex items-center gap-2">
+            <a href="/" className="flex items-center gap-2">
               <img
                 src="https://www.shadcnblocks.com/images/block/block-1.svg"
                 className="w-8"
                 alt="logo"
               />
               <span className="text-xl font-bold">Shadcn Blocks</span>
-            </div>
+            </a>
             <Sheet open={isOpen} onOpenChange={setIsOpen}>
               <SheetTrigger asChild>
                 <Button
@@ -98,18 +100,18 @@ const Navbar = () => {
               <SheetContent className="overflow-y-auto">
                 <SheetHeader>
                   <SheetTitle>
-                    <div className="flex items-center gap-2">
+                    <a href="/" className="flex items-center gap-2">
                       <img
                         src="https://www.shadcnblocks.com/images/block/block-1.svg"
                         className="w-8"
                         alt="logo"
                       />
                       <span className="text-xl font-bold">Shadcn Blocks</span>
-                    </div>
+                    </a>
                   </SheetTitle>
                 </SheetHeader>
                 <div className="my-8 flex flex-col gap-4">
-                  <a href="#" className="font-semibold">
+                  <a href="/" className="font-semibold">
                     Home
                   </a>
                   <Accordion type="single" collapsible className="w-full">
@@ -127,7 +129,7 @@ const Navbar = () => {
                   <a href="#" className="font-semibold">
                     Pricing
                   </a>
-                  <a href="#" className="font-semibold">
+                  <a href="/blog" className="font-semibold">
                     Blog
                   </a>
                 </div>

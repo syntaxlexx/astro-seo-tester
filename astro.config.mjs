@@ -20,7 +20,7 @@ export default defineConfig({
 
   image: {
     remotePatterns: [{ protocol: "https" }],
-    domains: ["picsum.photos"],
+    domains: ["picsum.photos", "via.placeholder.com"],
   },
 
   output: "server",

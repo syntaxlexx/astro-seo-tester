@@ -18,11 +18,10 @@ const posts = await getPosts({})
 			{posts.data.map((post) => (
 				<article>
       <Card className="flex flex-col">
-        <Image
+        <img
           src={post.featured_img}
           alt={post.title}
           class="w-full h-48 object-cover"
-          inferSize
         />
         <CardHeader>
           <CardTitle>{post.title}</CardTitle>
@@ -58,6 +57,6 @@ const posts = await getPosts({})
 		</div>
 		
 		<h1 class="font-semibold text-2xl pt-12">React Component</h1>
-    <PostsGrid client:only posts={posts.data} jsonData={posts}></PostsGrid>
+    <PostsGrid client:only="react" posts={posts.data} jsonData={posts}></PostsGrid>
 	</section>
 </Layout>

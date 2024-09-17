@@ -41,11 +41,10 @@ const pathname = Astro.url.pathname;
           <h1 class="text-3xl font-bold text-center">{post.title}</h1>
           <p class="text-muted-foreground">{post.excerpt}</p>
           <div class="w-full h-64">
-              <Image
+              <img
                   src={post.featured_img}
                   alt={post.title}
                   class="w-full h-full object-contain"
-                  inferSize
               />
           </div>
           <div>

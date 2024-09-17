@@ -43,7 +43,8 @@ const Navbar = () => {
                     variant: "ghost",
                   })
                 )}
-                href="/">
+                href="/"
+                data-astro-prefetch>
                 Home
               </a>
 
@@ -66,7 +67,8 @@ const Navbar = () => {
                     variant: "ghost",
                   })
                 )}
-                href="/blog">
+                href="/blog"
+                data-astro-prefetch>
                 Blog
               </a>
             </div>
@@ -100,7 +102,10 @@ const Navbar = () => {
               <SheetContent className="overflow-y-auto">
                 <SheetHeader>
                   <SheetTitle>
-                    <a href="/" className="flex items-center gap-2">
+                    <a
+                      href="/"
+                      data-astro-prefetch
+                      className="flex items-center gap-2">
                       <img
                         src="https://www.shadcnblocks.com/images/block/block-1.svg"
                         className="w-8"
@@ -129,7 +134,7 @@ const Navbar = () => {
                   <a href="#" className="font-semibold">
                     Pricing
                   </a>
-                  <a href="/blog" className="font-semibold">
+                  <a href="/blog" data-astro-prefetch className="font-semibold">
                     Blog
                   </a>
                 </div>

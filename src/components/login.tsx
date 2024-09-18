@@ -79,10 +79,22 @@ const Login = ({ redirectTo }: Props) => {
             </CardHeader>
             <CardContent>
               <div className="grid gap-4">
-                <Button variant="outline" className="w-full">
-                  <Globe className="mr-2 size-4" />
-                  Sign up with Github
-                </Button>
+                <a href="/login/github">
+                  <Button className="w-full" type="button">
+                    <Globe className="mr-2 size-4" />
+                    Sign in with Github
+                  </Button>
+                </a>
+
+                <a href="/login/google">
+                  <Button
+                    variant="outline"
+                    className="w-full bg-rose-500 hover:bg-rose-600 text-white hover:text-white"
+                    type="button">
+                    <Globe className="mr-2 size-4" />
+                    Sign in with Google
+                  </Button>
+                </a>
                 <div className="flex items-center gap-4">
                   <span className="h-px w-full bg-input"></span>
                   <span className="text-xs text-muted-foreground">OR</span>

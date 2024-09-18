@@ -2,6 +2,8 @@ import { encodeJwt, login } from "@/lib/api-queries";
 import { ActionError, defineAction } from "astro:actions";
 import { z } from "astro:schema";
 
+const systemCookies = ["token", "user-session", "github_oauth_state"];
+
 export const auth = {
   loginAction: defineAction({
     input: z.object({
@@ -54,19 +56,15 @@ export const auth = {
 
   logout: defineAction({
     handler: (input, ctx) => {
-      ctx.cookies.delete("user-session", {
-        httpOnly: true,
-        secure: true,
-        sameSite: "lax",
-        path: "/",
+      systemCookies.forEach((cookie) => {
+        ctx.cookies.delete(cookie, {
+          httpOnly: true,
+          secure: true,
+          sameSite: "lax",
+          path: "/",
+        });
       });
 
-      ctx.cookies.delete("token", {
-        httpOnly: true,
-        secure: true,
-        sameSite: "lax",
-        path: "/",
-      });
       return `Successfully logged out.`;
     },
   }),

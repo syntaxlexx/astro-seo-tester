@@ -108,3 +108,30 @@ export const login = async ({
 
   return data as LoginResponse;
 };
+
+export const loginViaOauthToken = async ({
+  accessToken,
+  provider,
+}: {
+  accessToken: string;
+  provider: string;
+}) => {
+  const res = await fetch(
+    `${API_URL}/oauth/callback-with-token/${provider}?token=${accessToken}`,
+    {
+      headers: apiHeaders,
+    }
+  );
+
+  if (!res.ok) {
+    if (res.status === 422) {
+      return new Error(formatValidationErrors(await res.text()));
+    }
+
+    return new Error(await res.text());
+  }
+
+  const data = await res.json();
+
+  return data as LoginResponse;
+};

@@ -16,8 +16,13 @@ import {
 } from "@/components/ui/sheet";
 import { cn } from "@/lib/utils";
 import { useState } from "react";
+import type { User } from "@/types";
 
-const Navbar = () => {
+interface Props {
+  user: User | null;
+}
+
+const Navbar = ({ user }: Props) => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
@@ -74,8 +79,19 @@ const Navbar = () => {
             </div>
           </div>
           <div className="flex gap-2">
-            <Button variant={"outline"}>Log in</Button>
-            <Button>Sign up</Button>
+            {user ? (
+              <>
+                <Button>Dashboard</Button>
+                <Button variant={"outline"}>Logout</Button>
+              </>
+            ) : (
+              <>
+                <a href="/login" data-astro-prefetch>
+                  <Button variant={"outline"}>Log in</Button>
+                </a>
+                <Button>Sign up</Button>
+              </>
+            )}
           </div>
         </nav>
 

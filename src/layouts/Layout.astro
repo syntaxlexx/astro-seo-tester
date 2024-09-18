@@ -23,7 +23,7 @@ const user = Astro.locals.user;
 		<title>{title}</title>
 	</head>
 	<body class="antialiased min-h-screen relative">
-		<Navbar client:load/>
+		<Navbar client:load user={user}/>
 
 		<main>
 			<slot />

@@ -3,6 +3,7 @@ import SinglePost from "@/components/posts/single-post";
 import Layout from "@/layouts/Layout.astro";
 import { getPost } from "@/lib/api-queries";
 import { AstroSeo } from '@astrolib/seo';
+import * as React from 'react'
 
 const { slug } = Astro.params;
 const pathname = Astro.url.pathname;

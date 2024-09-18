@@ -117,13 +117,15 @@ export const loginViaOauthToken = async ({
   provider: string;
 }) => {
   const res = await fetch(
-    `${API_URL}/oauth/callback-with-token/${provider}?token=${accessToken}`,
+    `${API_URL}/oauth/callback-from-api/${provider}?token=${accessToken}`,
     {
       headers: apiHeaders,
     }
   );
 
   if (!res.ok) {
+    console.log("res.status", res.status);
+    console.log("res.statusText", res.statusText);
     if (res.status === 422) {
       return new Error(formatValidationErrors(await res.text()));
     }

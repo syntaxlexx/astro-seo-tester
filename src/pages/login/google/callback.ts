@@ -32,8 +32,10 @@ export async function GET(context: APIContext): Promise<Response> {
     // now send the user to our backend for further processing
     const resp = await loginViaOauthToken({
       accessToken: tokens.accessToken,
-      provider: "github",
+      provider: "google",
     });
+
+    console.log("resp", resp);
 
     if (resp instanceof Error) {
       throw new Error(resp.message);
@@ -64,24 +66,59 @@ export async function GET(context: APIContext): Promise<Response> {
       expires: expiry,
     });
 
-    // TODO: redirect to respective dashboards
+    // if specified redirect to
+    let redirectTo = context.cookies.get("redirectTo")?.value ?? null;
+    if (redirectTo) {
+      redirectTo = redirectTo.startsWith("/") ? redirectTo : `/${redirectTo}`;
+
+      // delete the cookie first
+      context.cookies.delete("redirectTo", {
+        path: "/",
+        secure: true,
+        httpOnly: true,
+        sameSite: "lax",
+      });
+
+      return context.redirect(redirectTo);
+    }
+
+    // redirect to respective dashboards
+    const { role } = resp.user;
+
+    switch (role) {
+      case "ADMIN":
+        return context.redirect("/admin");
+      case "USER":
+        return context.redirect("/dashboard");
+      default:
+        break;
+    }
+
     return context.redirect("/");
   } catch (e) {
+    console.log("e", e);
     // the specific error message depends on the provider
     if (e instanceof OAuth2RequestError) {
       // invalid code
-      return new Response(null, {
-        status: 400,
-      });
+      // return new Response(null, {
+      //   status: 400,
+      // });
+      return context.redirect(
+        "/login?error=true&message='Invalid Code. Please try again.'"
+      );
     }
 
-    return new Response(null, {
-      status: 500,
-    });
+    // return new Response(null, {
+    //   status: 500,
+    // });
+
+    return context.redirect(
+      "/login?error=true&message='An Error Occurred. Please try again.'"
+    );
   }
 }
 
-interface GitHubUser {
+interface GoogleUser {
   id: string;
   login: string;
 }

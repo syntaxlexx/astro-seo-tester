@@ -18,9 +18,11 @@ import AlertError from "./alert-error";
 
 type Props = {
   redirectTo?: string;
+  hasError?: boolean;
+  message?: string;
 };
 
-const Login = ({ redirectTo }: Props) => {
+const Login = ({ redirectTo, hasError, message }: Props) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState<string | null>(null);
@@ -79,6 +81,8 @@ const Login = ({ redirectTo }: Props) => {
             </CardHeader>
             <CardContent>
               <div className="grid gap-4">
+                {hasError && message && <AlertError message={message} />}
+
                 <a href="/login/github">
                   <Button className="w-full" type="button">
                     <Globe className="mr-2 size-4" />

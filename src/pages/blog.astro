@@ -1,62 +1,70 @@
 ---
-import { Button } from '@/components/ui/button';
-import Layout from '../layouts/Layout.astro';
-import * as React from 'react'
+import { Button } from "@/components/ui/button";
+import Layout from "../layouts/Layout.astro";
 
-import PostsGrid from '@/components/posts/posts-grid';
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
+import PostsGrid from "@/components/posts/posts-grid";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
 
-import { getPosts } from '@/lib/api-queries';
+import { getPosts } from "@/lib/api-queries";
 
-const posts = await getPosts({})
+const posts = await getPosts({});
 ---
 
 <Layout title="Welcome to Our Blog">
-	<section class="container py-8 space-y-4">
-		<h1 class="font-semibold text-2xl">Astro Component</h1>
+  <section class="container py-8 space-y-4">
+    <h1 class="font-semibold text-2xl">Astro Component</h1>
     <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6">
-			{posts.data.map((post) => (
-				<article>
-      <Card className="flex flex-col">
-        <img
-          src={post.featured_img}
-          alt={post.title}
-          class="w-full h-48 object-cover"
-        />
-        <CardHeader>
-          <CardTitle>{post.title}</CardTitle>
-          <CardDescription className="flex justify-between items-center gap-x-2">
-            {post.category && (
-              <span>
-                <a href="#">{post.category.name}</a>
-              </span>
-            )}
+      {
+        posts.data.map((post) => (
+          <article>
+            <Card className="flex flex-col">
+              <img
+                src={post.featured_img}
+                alt={post.title}
+                class="w-full h-48 object-cover"
+              />
+              <CardHeader>
+                <CardTitle>{post.title}</CardTitle>
+                <CardDescription className="flex justify-between items-center gap-x-2">
+                  {post.category && (
+                    <span>
+                      <a href="#">{post.category.name}</a>
+                    </span>
+                  )}
 
-            <span class="capitalize">
-              <a href="#">{post.user?.name}</a>
-            </span>
+                  <span class="capitalize">
+                    <a href="#">{post.user?.name}</a>
+                  </span>
 
-            <span>{post.published_at_human}</span>
-          </CardDescription>
-        </CardHeader>
-        <CardContent className="flex-1">
-          <div>{post.excerpt}</div>
-        </CardContent>
-        <CardFooter className="flex justify-end gap-x-3">
-          <a href={`/posts/${post.slug}`}>
-            <Button variant={"outline"}>Read More</Button>
-          </a>
-        
-                        <a href={`/posts/client-side/${post.slug}`}>
-                          <Button variant={"secondary"}>Read (Client-Side)</Button>
-                        </a>
-        </CardFooter>
-      </Card>
-    </article>
-			))}
-		</div>
-		
-		<h1 class="font-semibold text-2xl pt-12">React Component</h1>
-    <PostsGrid client:only="react" posts={posts.data} jsonData={posts}></PostsGrid>
-	</section>
+                  <span>{post.published_at_human}</span>
+                </CardDescription>
+              </CardHeader>
+              <CardContent className="flex-1">
+                <div>{post.excerpt}</div>
+              </CardContent>
+              <CardFooter className="flex justify-end gap-x-3">
+                <a href={`/posts/${post.slug}`}>
+                  <Button variant={"outline"}>Read More</Button>
+                </a>
+
+                <a href={`/posts/client-side/${post.slug}`}>
+                  <Button variant={"secondary"}>Read (Client-Side)</Button>
+                </a>
+              </CardFooter>
+            </Card>
+          </article>
+        ))
+      }
+    </div>
+
+    <h1 class="font-semibold text-2xl pt-12">React Component</h1>
+    <PostsGrid client:only="react" posts={posts.data} jsonData={posts} />
+  </section>
 </Layout>

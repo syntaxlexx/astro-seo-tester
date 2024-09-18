@@ -27,7 +27,13 @@ export interface User {
   name: string;
   email: string;
   email_verified_at?: string;
+  role: "USER" | "ADMIN";
 }
+
+export type LoginResponse = {
+  user: User;
+  access_token: string;
+};
 
 export type Category = {
   id: number;

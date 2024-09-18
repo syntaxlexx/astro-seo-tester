@@ -1,9 +1,10 @@
 ---
+import Login from "@/components/login";
 import Layout from "@/layouts/Layout.astro";
 ---
 
 <Layout title="Login">
-	<section class="container py-8 space-y-4">
-
+  <section class="container py-8 space-y-4">
+    <Login client:load />
   </section>
-  </Layout>
+</Layout>

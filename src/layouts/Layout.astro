@@ -1,11 +1,12 @@
 ---
-import Footer from '@/components/footer';
-import Navbar from '@/components/navbar';
+import Footer from "@/components/footer";
+import Navbar from "@/components/navbar";
+import { Toaster } from "@/components/ui/sonner";
 
-import '@/styles/globals.css';
+import "@/styles/globals.css";
 
 interface Props {
-	title: string;
+  title: string;
 }
 
 const { title } = Astro.props;
@@ -14,21 +15,22 @@ const user = Astro.locals.user;
 
 <!doctype html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="description" content="Astro description" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="generator" content={Astro.generator} />
-		<title>{title}</title>
-	</head>
-	<body class="antialiased min-h-screen relative">
-		<Navbar client:load user={user}/>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content="Astro description" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+  </head>
+  <body class="antialiased min-h-screen relative">
+    <Navbar client:load user={user} />
 
-		<main>
-			<slot />
-		</main>
-		
-		<Footer />
-	</body>
+    <main>
+      <slot />
+    </main>
+
+    <Footer />
+    <Toaster client:load />
+  </body>
 </html>

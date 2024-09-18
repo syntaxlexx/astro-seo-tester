@@ -17,6 +17,7 @@ import {
 import { cn } from "@/lib/utils";
 import { useState } from "react";
 import type { User } from "@/types";
+import LogoutButton from "./logout-button";
 
 interface Props {
   user: User | null;
@@ -81,8 +82,10 @@ const Navbar = ({ user }: Props) => {
           <div className="flex gap-2">
             {user ? (
               <>
-                <Button>Dashboard</Button>
-                <Button variant={"outline"}>Logout</Button>
+                <a href="/dashboard">
+                  <Button>Dashboard</Button>
+                </a>
+                <LogoutButton />
               </>
             ) : (
               <>

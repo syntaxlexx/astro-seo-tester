@@ -11,6 +11,10 @@ import vercel from "@astrojs/vercel/serverless";
 export default defineConfig({
   prefetch: true,
 
+  security: {
+    checkOrigin: true,
+  },
+
   integrations: [
     react(),
     tailwind({

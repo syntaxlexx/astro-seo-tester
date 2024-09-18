@@ -1,3 +1,10 @@
+export type Session = {
+  id: string;
+  expiresAt: Date;
+  fresh: boolean;
+  userId: User["id"];
+};
+
 export type PaginationMeta = {
   current_page: number;
   from: number;

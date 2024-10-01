@@ -2,6 +2,8 @@
 import Footer from "@/components/footer";
 import Navbar from "@/components/navbar";
 import { Toaster } from "@/components/ui/sonner";
+import { ViewTransitions } from 'astro:transitions';
+
 
 import "@/styles/globals.css";
 
@@ -21,6 +23,9 @@ const user = Astro.locals.user;
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
+
+    <ViewTransitions/>
+    
     <title>{title}</title>
   </head>
   <body class="antialiased min-h-screen relative">
